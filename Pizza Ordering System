@@ -1,0 +1,333 @@
+import java.awt.EventQueue;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+
+public class Main extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JFrame PizzaOrderingSystem;
+	private JPanel contentPane;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main frame = new Main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Main() {
+		
+		PizzaOrderingSystem = new JFrame();
+		PizzaOrderingSystem.setTitle("PIZZA ORDERING SYSTEM");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 515, 520);
+		setLocationRelativeTo(null);
+		
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblFlavor = new JLabel("SELECT FLAVOR");
+		lblFlavor.setBounds(20, 20, 85, 14);
+		lblFlavor.setFont(new Font("Tahoma", Font.BOLD, 11));
+		contentPane.add(lblFlavor);
+		
+		JPanel panelFlavor = new JPanel();
+		panelFlavor.setBounds(20, 45, 200, 85);
+		panelFlavor.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(panelFlavor);
+		panelFlavor.setLayout(null);
+		
+		JRadioButton rdoHawaiian = new JRadioButton("HAWAIIAN");
+		rdoHawaiian.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdoHawaiian.setBounds(6, 7, 109, 23);
+		rdoHawaiian.setSelected(true);
+		panelFlavor.add(rdoHawaiian);
+		
+		JRadioButton rdoHamAndCheese = new JRadioButton("HAM AND CHEESE");
+		rdoHamAndCheese.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdoHamAndCheese.setBounds(6, 33, 127, 23);
+		panelFlavor.add(rdoHamAndCheese);
+		
+		JRadioButton rdoPepperoni = new JRadioButton("PEPPERONI");
+		rdoPepperoni.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdoPepperoni.setBounds(6, 58, 127, 23);
+		panelFlavor.add(rdoPepperoni);
+		
+		ButtonGroup Flavor = new ButtonGroup();
+		Flavor.add(rdoHawaiian);
+		Flavor.add(rdoHamAndCheese);
+		Flavor.add(rdoPepperoni);
+		
+		JLabel lblSize = new JLabel("SELECT SIZE");
+		lblSize.setBounds(20, 141, 85, 14);
+		lblSize.setFont(new Font("Tahoma", Font.BOLD, 11));
+		contentPane.add(lblSize);
+		
+		JPanel panelSize = new JPanel();
+		panelSize.setBounds(20, 166, 200, 85);
+		panelSize.setLayout(null);
+		panelSize.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(panelSize);
+		
+		JRadioButton rdoSmall = new JRadioButton("SMALL-SIZED");
+		rdoSmall.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdoSmall.setBounds(6, 7, 109, 23);
+		rdoSmall.setSelected(true);
+		panelSize.add(rdoSmall);
+		
+		JRadioButton rdoMedium = new JRadioButton("MEDIUM-SIZED");
+		rdoMedium.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdoMedium.setBounds(6, 33, 127, 23);
+		panelSize.add(rdoMedium);
+		
+		JRadioButton rdoLarge = new JRadioButton("LARGE-SIZED");
+		rdoLarge.setFont(new Font("Tahoma", Font.BOLD, 11));
+		rdoLarge.setBounds(6, 58, 127, 23);
+		panelSize.add(rdoLarge);
+		
+		ButtonGroup Size = new ButtonGroup();
+		Size.add(rdoSmall);
+		Size.add(rdoMedium);
+		Size.add(rdoLarge);
+		
+		JLabel lblSmallPrice = new JLabel("90.00");
+		lblSmallPrice.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblSmallPrice.setBounds(144, 11, 46, 14);
+		panelSize.add(lblSmallPrice);
+		
+		JLabel lblMediumPrice = new JLabel("110.00");
+		lblMediumPrice.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblMediumPrice.setBounds(144, 37, 46, 14);
+		panelSize.add(lblMediumPrice);
+		
+		JLabel lblLargePrice = new JLabel("130.00");
+		lblLargePrice.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblLargePrice.setBounds(144, 62, 46, 14);
+		panelSize.add(lblLargePrice);
+		
+		
+		ActionListener flavorListener = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if (rdoHawaiian.isSelected()) {
+				    lblSmallPrice.setText("90.00");
+				} else if (rdoHamAndCheese.isSelected()) {
+					lblSmallPrice.setText("110.00");
+				} else if (rdoPepperoni.isSelected()) {
+					lblSmallPrice.setText("130.00");
+				}
+					
+				
+				if (rdoHawaiian.isSelected()) {
+				    lblMediumPrice.setText("110.00");
+				} else if (rdoHamAndCheese.isSelected()) {
+				    lblMediumPrice.setText("130.00");
+				} else if (rdoPepperoni.isSelected()) {
+				    lblMediumPrice.setText("150.00");
+				}
+				
+				if (rdoHawaiian.isSelected()) {
+				    lblLargePrice.setText("130.00");
+				} else if (rdoHamAndCheese.isSelected()) {
+					lblLargePrice.setText("150.00");
+				} else if (rdoPepperoni.isSelected()) {
+					lblLargePrice.setText("170.00");
+				}
+				
+			}
+			
+		};
+		
+		rdoHawaiian.addActionListener(flavorListener);
+		rdoHamAndCheese.addActionListener(flavorListener);
+		rdoPepperoni.addActionListener(flavorListener);
+		
+		JLabel lblAddOns = new JLabel("SELECT ADD-ONS");
+		lblAddOns.setBounds(20, 262, 93, 14);
+		lblAddOns.setFont(new Font("Tahoma", Font.BOLD, 11));
+		contentPane.add(lblAddOns);
+		
+		JPanel panelAddOns = new JPanel();
+		panelAddOns.setBounds(20, 287, 200, 140);
+		panelAddOns.setLayout(null);
+		panelAddOns.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.add(panelAddOns);
+		
+		JCheckBox chkPepper = new JCheckBox("PEPPER");
+		chkPepper.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chkPepper.setBounds(6, 7, 97, 23);
+		panelAddOns.add(chkPepper);
+		
+		JCheckBox chkOnions = new JCheckBox("ONIONS");
+		chkOnions.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chkOnions.setBounds(6, 33, 97, 23);
+		panelAddOns.add(chkOnions);
+		
+		JCheckBox chkBlackOlives = new JCheckBox("BLACK OLIVES");
+		chkBlackOlives.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chkBlackOlives.setBounds(6, 59, 110, 23);
+		panelAddOns.add(chkBlackOlives);
+		
+		JCheckBox chkGreenPeppers = new JCheckBox("GREEN PEPPERS");
+		chkGreenPeppers.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chkGreenPeppers.setBounds(6, 85, 120, 23);
+		panelAddOns.add(chkGreenPeppers);
+		
+		JCheckBox chkExtraCheese = new JCheckBox("EXTRA CHEESE");
+		chkExtraCheese.setFont(new Font("Tahoma", Font.BOLD, 11));
+		chkExtraCheese.setBounds(6, 111, 120, 23);
+		panelAddOns.add(chkExtraCheese);
+
+		JLabel lblOrderSummary = new JLabel("ORDER SUMMARY");
+		lblOrderSummary.setBounds(249, 20, 99, 14);
+		lblOrderSummary.setFont(new Font("Tahoma", Font.BOLD, 11));
+		contentPane.add(lblOrderSummary);
+		
+		JTextArea txAOrderSummary = new JTextArea();
+		txAOrderSummary.setBounds(249, 45, 225, 206);
+		contentPane.add(txAOrderSummary);
+		
+		JButton btnCreateOrder = new JButton("CREATE ORDER");
+		btnCreateOrder.setBounds(20, 438, 200, 23);
+		contentPane.add(btnCreateOrder);
+		btnCreateOrder.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+
+				String flavor = " ";
+				String size = " ";	
+				String addons = " ";
+				double price = 0.00;
+				double add = 0.00;
+						
+				if(rdoHawaiian.isSelected() && rdoSmall.isSelected()) {
+					flavor = rdoHawaiian.getText();
+					price = 90.00;
+					size = rdoSmall.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoHawaiian.isSelected() && rdoMedium.isSelected()) {
+					flavor = rdoHawaiian.getText();
+					price = 110.00;
+					size = rdoMedium.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoHawaiian.isSelected() && rdoLarge.isSelected()) {
+					flavor = rdoHawaiian.getText();
+					price = 130.00;
+					size = rdoLarge.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoHamAndCheese.isSelected() && rdoSmall.isSelected()) {
+					flavor = rdoHamAndCheese.getText();
+					price = 110.00;
+					size = rdoSmall.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoHamAndCheese.isSelected() && rdoMedium.isSelected()) {
+					flavor = rdoHamAndCheese.getText();
+					price = 130.00;
+					size = rdoMedium.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoHamAndCheese.isSelected() && rdoLarge.isSelected()) {
+					flavor = rdoHamAndCheese.getText();
+					price = 150.00;
+					size = rdoLarge.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoPepperoni.isSelected() && rdoSmall.isSelected()) {
+					flavor = rdoPepperoni.getText();
+					price = 130.00;
+					size = rdoSmall.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoPepperoni.isSelected() && rdoMedium.isSelected()) {
+					flavor = rdoPepperoni.getText();
+					price = 150.00;
+					size = rdoMedium.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				else if(rdoPepperoni.isSelected() && rdoLarge.isSelected()) {
+					flavor = rdoPepperoni.getText();
+					price = 170.00;
+					size = rdoLarge.getText();
+					txAOrderSummary.setText(null);
+				    btnCreateOrder.setEnabled(true);
+				}
+				
+				if(chkPepper.isSelected()) {
+				    add = add + 5.00;
+				    addons = addons + "                   " + chkPepper.getText() + "\n";
+				}
+				if(chkOnions.isSelected()) {
+				    add = add + 10.00;
+				    addons = addons + "                    " + chkOnions.getText() + "\n";
+				}
+				if(chkBlackOlives.isSelected()) {
+				    add = add+ 15.00;
+				    addons = addons + "                    " + chkBlackOlives.getText() + "\n";
+				}
+				if(chkGreenPeppers.isSelected()) {
+				    add = add + 20.00;
+				    addons = addons + "                    " + chkGreenPeppers.getText() + "\n";
+				}
+				if(chkExtraCheese.isSelected()) {
+				    add = add + 25.00;
+				    addons = addons + "                    " + chkExtraCheese.getText() + "\n";
+				}
+
+				double total = price + add;
+
+				txAOrderSummary.append("PIZZA FLAVOR  :  " + flavor + 
+				            "\n\n" + "PIZZA SIZE  :  " + size + 
+				            "\n\n" + "ADD ONS  : " + "\n" + addons + 
+				            "\n" + "TOTAL PRICE  : " + total + " pesos");
+				
+			};
+		});
+		
+	}
+}
